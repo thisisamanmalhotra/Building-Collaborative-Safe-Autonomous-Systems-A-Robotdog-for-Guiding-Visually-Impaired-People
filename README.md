@@ -35,7 +35,15 @@ This paper presents a summary of a use case involving a robotdog dedicated to gu
 
 ## References
 
-[1] Insert reference to relevant literature or sources here.
+[1] Lead Academy. dog. [https://lead-academy.org/blog/how-much-does-it-cost-to-train-a-guide-dog/](https://lead-academy.org/blog/how-much-does-it-cost-to-train-a-guide-dog/).
+
+[2] ROS Wiki. Ros master slave api. [https://wiki.ros.org/](https://wiki.ros.org/).
+
+[3] Selma Saidi. Collective reasoning for safe autonomous systems, 2023.
+
+[4] Selma Saidi, Dirk Ziegenbein, Jyotirmoy V. Deshmukh, and Rolf Ernst. Autonomous systems design: Charting a new discipline. IEEE Design Test, 39(1):8–23, 2022.
+
+[5] Shaoshan Liu and Jean-Luc Gaudiot. Ieee international roadmap for devices and systems (irds) autonomous machine computing white paper 2022. 2022.
 
 ---
 For further inquiries, please contact the authors.
