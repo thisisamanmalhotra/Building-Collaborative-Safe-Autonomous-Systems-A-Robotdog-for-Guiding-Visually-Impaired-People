@@ -47,3 +47,122 @@ This paper presents a summary of a use case involving a robotdog dedicated to gu
 
 ---
 For further inquiries, please contact the authors.
+
+
+
+
+
+
+Sure, here's the README.md file:
+
+```markdown
+# TrustAPI Documentation
+
+## Overview
+
+TrustAPI is an API service that facilitates the sharing of sensor data among systems and provides responses regarding the most trustworthy sensor among the inputs provided. This API is designed to handle up to three sensor inputs currently, with a session time set to 10 inputs.
+
+## Authentication
+
+To access the TrustAPI, users need to provide authentication credentials in the HTTP headers. The credentials must be encoded in Base64 format and included in the `Authorization` header.
+
+```python
+import base64
+
+# Authentication details
+username = 'your_username'
+password = 'your_password'
+
+# Encoding credentials
+credentials = base64.b64encode(f'{username}:{password}'.encode()).decode()
+```
+
+## Usage Example
+
+Below is an example code demonstrating how to use TrustAPI to submit sensor readings and receive responses regarding the most trustworthy sensor:
+
+```python
+import requests
+import base64
+import secrets
+
+url = 'https://trustapi.example.com/'
+
+# Authentication details
+username = 'your_username'
+password = 'your_password'
+
+# Encoding credentials
+credentials = base64.b64encode(f'{username}:{password}'.encode()).decode()
+
+# Defining sensor values
+sensor_values = {
+    "sensor1": 0.5,
+    "sensor2": 0.6,
+    "sensor3": 0.7
+}
+
+# Generating session nonce
+session_nonce = secrets.token_hex(32)
+
+# Setting headers with session nonce
+headers = {
+    'Authorization': f'Basic {credentials}',
+    'TrustAPI-Session-Nonce': session_nonce
+}
+
+# Making 15 POST requests
+for _ in range(15):
+    # Building data payload
+    data = {"sensor_readings": sensor_values}
+
+    # Making POST request
+    response = requests.post(url, json=data, headers=headers)
+
+    # Printing the response
+    print(response.text)
+```
+
+## API Endpoints
+
+### POST /sensor_readings
+
+This endpoint is used to submit sensor readings to the TrustAPI. The request should include a JSON object containing sensor readings as key-value pairs. The API will analyze the provided sensor data and determine the most trustworthy sensor among them.
+
+#### Request Body
+
+```json
+{
+  "sensor_readings": {
+    "sensor1": 0.5,
+    "sensor2": 0.6,
+    "sensor3": 0.7
+  }
+}
+```
+
+#### Response
+
+The response will contain information about the most trustworthy sensor and its corresponding reading.
+
+```json
+{
+  "most_trustworthy_sensor": "sensor3",
+  "reading": 0.7
+}
+```
+
+## Rate Limiting
+
+The TrustAPI is limited to 10 inputs per session. After reaching the session limit, users need to initiate a new session by including a new session nonce in the headers of subsequent requests.
+
+## Error Handling
+
+In case of errors, the API will return appropriate HTTP status codes along with error messages in the response body.
+
+## Conclusion
+
+TrustAPI provides a simple yet powerful interface for sharing sensor data and determining the most trustworthy sensor among them. With its straightforward authentication mechanism and intuitive endpoints, developers can seamlessly integrate TrustAPI into their systems for enhanced sensor data analysis.
+```
+
+You can copy this text and save it as README.md in your project directory.
