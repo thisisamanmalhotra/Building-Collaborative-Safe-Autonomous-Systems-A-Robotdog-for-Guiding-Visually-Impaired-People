@@ -51,10 +51,6 @@ For further inquiries, please contact the authors.
 
 
 
-
-
-Sure, here's the README.md file:
-
 ```markdown
 # TrustAPI Documentation
 
@@ -164,5 +160,3 @@ In case of errors, the API will return appropriate HTTP status codes along with 
 
 TrustAPI provides a simple yet powerful interface for sharing sensor data and determining the most trustworthy sensor among them. With its straightforward authentication mechanism and intuitive endpoints, developers can seamlessly integrate TrustAPI into their systems for enhanced sensor data analysis.
 ```
-
-You can copy this text and save it as README.md in your project directory.
